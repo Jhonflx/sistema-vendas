@@ -7,3 +7,16 @@ export const cadastroSchema = z.object({
 })
 
 export type CadastroFormData = z.infer<typeof cadastroSchema>
+
+export const loginSchema = z.object({
+  email: z.string().email('Formato de e-mail inválido').min(1, 'O e-mail é obrigatório'),
+  senha: z.string().min(1, 'A senha é obrigatória'),
+})
+
+export type LoginFormData = z.infer<typeof loginSchema>
+
+export const esqueciSenhaSchema = z.object({
+  email: z.string().email('Formato de e-mail inválido').min(1, 'O e-mail é obrigatório'),
+})
+
+export type EsqueciSenhaFormData = z.infer<typeof esqueciSenhaSchema>
