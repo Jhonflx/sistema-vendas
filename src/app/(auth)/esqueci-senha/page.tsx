@@ -1,4 +1,4 @@
-import { FormEsqueciSenha } from "../../features/auth/components/FormEsqueciSenha";
+import { FormEsqueciSenha } from "@/features/auth/components/FormEsqueciSenha";
 
 export default function EsqueciSenhaPage() {
   return (

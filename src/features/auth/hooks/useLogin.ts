@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginSchema, LoginFormData } from '../type'
 import { toast } from 'sonner'
 
 export function useLogin() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -23,6 +25,7 @@ export function useLogin() {
       await new Promise((resolve) => setTimeout(resolve, 1200))
       console.log('[BACKEND MOCK] Tentativa de login com:', data.email)
       toast.success('Login realizado com sucesso! Entrando no sistema...')
+      router.push('/perfil')
     } catch (error) {
       toast.error('Credenciais inválidas.')
     } finally {
@@ -30,5 +33,5 @@ export function useLogin() {
     }
   }
 
-  return { register, handleSubmit, errors, isLoading }
+  return { register, onSubmit: handleSubmit(onSubmit), errors, isLoading }
 }

@@ -2,14 +2,14 @@
 
 import Link from 'next/link'
 import { useEsqueciSenha } from '../hooks/useEsqueciSenha'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { Button } from './ui/button'
-import { Card, CardContent } from './ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { Mail, ArrowLeft, KeyRound } from 'lucide-react'
 
 export function FormEsqueciSenha() {
-  const { register, handleSubmit, errors, isLoading } = useEsqueciSenha()
+  const { register, onSubmit, errors, isLoading } = useEsqueciSenha()
 
   return (
     <Card className="w-full max-w-md p-6 shadow-lg border-muted/40">
@@ -28,7 +28,7 @@ export function FormEsqueciSenha() {
         </div>
 
         {/* Formulário */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">E-mail Corporativo</Label>
             <div className="relative">

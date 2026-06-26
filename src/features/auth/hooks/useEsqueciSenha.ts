@@ -37,7 +37,7 @@ export function useEsqueciSenha() {
 
   return {
     register,
-    handleSubmit: (fn: any) => handleSubmit(onSubmit),
+    onSubmit: handleSubmit(onSubmit),
     errors,
     isLoading,
   }

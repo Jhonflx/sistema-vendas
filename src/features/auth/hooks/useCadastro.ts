@@ -32,7 +32,7 @@ export function useCadastro() {
       }
 
       toast.success('Conta criada com sucesso! Bem-vindo ao SGPV.')
-      router.push('/') // Redireciona para a home/dashboard logada
+      router.push('/perfil') // Redireciona para a home/dashboard logada
     } catch (error) {
       toast.error('Erro ao realizar cadastro. Tente novamente.')
     } finally {

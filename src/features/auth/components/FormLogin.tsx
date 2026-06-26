@@ -2,14 +2,14 @@
 
 import Link from 'next/link'
 import { useLogin } from '../hooks/useLogin'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { Button } from './ui/button'
-import { Card, CardContent } from './ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { Mail, Lock, Store } from 'lucide-react'
 
 export function FormLogin() {
-  const { register, handleSubmit, errors, isLoading } = useLogin()
+  const { register, onSubmit, errors, isLoading } = useLogin()
 
   return (
     <Card className="w-full max-w-md p-6 shadow-lg border-muted/40">
@@ -23,7 +23,7 @@ export function FormLogin() {
           <h2 className="text-md font-semibold text-slate-700 pt-2">Acesse sua Conta</h2>
         </div>
 
-        <form onSubmit={handleSubmit((data) => console.log(data))} className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">E-mail</Label>
             <div className="relative">
@@ -48,7 +48,7 @@ export function FormLogin() {
             {errors.senha && <p className="text-xs font-medium text-red-500">{errors.senha.message}</p>}
           </div>
 
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading} className="w-full">
             {isLoading ? 'Autenticando...' : 'Entrar no Sistema'}
           </Button>
         </form>
