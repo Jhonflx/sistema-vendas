@@ -14,8 +14,8 @@ export default function DashboardLayout({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const menuItems = [
+    { name: 'Dashboard Geral', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Perfil Cliente', href: '/perfil', icon: User },
-    { name: 'Dashboard Geral', href: '#', icon: LayoutDashboard, disabled: true },
     { name: 'Produtos', href: '#', icon: Package, disabled: true },
     { name: 'Clientes', href: '#', icon: Users, disabled: true },
     { name: 'Configurações', href: '#', icon: Settings, disabled: true },
