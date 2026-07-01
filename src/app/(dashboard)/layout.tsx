@@ -18,11 +18,11 @@ export default function DashboardLayout({
     { name: 'Perfil Cliente', href: '/perfil', icon: User },
     { name: 'Produtos', href: '#', icon: Package, disabled: true },
     { name: 'Clientes', href: '#', icon: Users, disabled: true },
-    { name: 'Configurações', href: '#', icon: Settings, disabled: true },
+    { name: 'Configurações', href: '/settings', icon: Settings }, // Alterado aqui! 🚀
   ]
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-300">
       {/* 1. Sidebar para Desktops */}
       <aside className="hidden md:flex flex-col w-64 bg-white text-slate-600 border-r border-slate-100 shrink-0">
         {/* Header da Sidebar */}
@@ -74,10 +74,10 @@ export default function DashboardLayout({
             <LogOut className="h-4.5 w-4.5" />
             Sair do Sistema
           </Link>
-        </div>
+        </div>       
       </aside>
 
-      {/* 2. Container Principal */}
+      {/* 2. Container Principal */}      
       <div className="flex-1 flex flex-col min-w-0">
         {/* Topbar */}
         <header className="h-16 bg-white border-b border-slate-100 flex items-center justify-between px-6 sticky top-0 z-30">
