@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Store, User, LayoutDashboard, Package, Users, Settings, LogOut, Menu } from 'lucide-react'
+import { Store, User, LayoutDashboard, Package, Users, Settings, LogOut, Menu, Building2 } from 'lucide-react'
 import { useState } from 'react'
 
 export default function DashboardLayout({
@@ -18,7 +18,8 @@ export default function DashboardLayout({
     { name: 'Perfil Cliente', href: '/perfil', icon: User },
     { name: 'Produtos', href: '#', icon: Package, disabled: true },
     { name: 'Clientes', href: '#', icon: Users, disabled: true },
-    { name: 'Configurações', href: '/settings', icon: Settings }, // Alterado aqui! 🚀
+    { name: 'Fornecedores', href: '/fornecedores', icon: Building2 }, // Novo item adicionado! 🚀
+    { name: 'Configurações', href: '/settings', icon: Settings },
   ]
 
   return (
