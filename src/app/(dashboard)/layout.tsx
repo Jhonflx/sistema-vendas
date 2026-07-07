@@ -16,9 +16,9 @@ export default function DashboardLayout({
   const menuItems = [
     { name: 'Dashboard Geral', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Perfil Cliente', href: '/perfil', icon: User },
-    { name: 'Produtos', href: '#', icon: Package, disabled: true },
-    { name: 'Clientes', href: '#', icon: Users, disabled: true },
-    { name: 'Fornecedores', href: '/fornecedores', icon: Building2 }, // Novo item adicionado! 🚀
+    { name: 'Produtos', href: '/produtos', icon: Package },
+    { name: 'Clientes', href: '/clientes', icon: Users },
+    { name: 'Fornecedores', href: '/fornecedores', icon: Building2 },
     { name: 'Configurações', href: '/settings', icon: Settings },
   ]
 
@@ -26,7 +26,6 @@ export default function DashboardLayout({
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-300">
       {/* 1. Sidebar para Desktops */}
       <aside className="hidden md:flex flex-col w-64 bg-white text-slate-600 border-r border-slate-100 shrink-0">
-        {/* Header da Sidebar */}
         <div className="h-16 flex items-center px-6 border-b border-slate-100 gap-2.5">
           <div className="p-2 bg-blue-600 text-white rounded-xl shadow-xs">
             <Store className="h-5 w-5" />
@@ -37,7 +36,6 @@ export default function DashboardLayout({
           </div>
         </div>
 
-        {/* Links de Navegação */}
         <nav className="flex-1 px-4 py-6 space-y-1.5">
           {menuItems.map((item) => {
             const Icon = item.icon
@@ -45,28 +43,20 @@ export default function DashboardLayout({
             return (
               <Link
                 key={item.name}
-                href={item.disabled ? '#' : item.href}
+                href={item.href}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   isActive
                     ? 'bg-blue-600 text-white shadow-xs'
-                    : item.disabled
-                    ? 'opacity-40 cursor-not-allowed hover:bg-transparent'
                     : 'hover:bg-slate-50 hover:text-slate-900'
                 }`}
               >
                 <Icon className="h-4.5 w-4.5 shrink-0" />
                 {item.name}
-                {item.disabled && (
-                  <span className="ml-auto text-[9px] bg-slate-100 text-slate-400 px-1.5 py-0.5 rounded font-bold uppercase">
-                    Breve
-                  </span>
-                )}
               </Link>
             )
           })}
         </nav>
 
-        {/* Footer da Sidebar */}
         <div className="p-4 border-t border-slate-100">
           <Link
             href="/login"
@@ -103,7 +93,7 @@ export default function DashboardLayout({
           </div>
         </header>
 
-        {/* Menu Mobile deslizante */}
+        {/* Menu Mobile */}
         {isMobileMenuOpen && (
           <div className="md:hidden fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-xs" onClick={() => setIsMobileMenuOpen(false)}>
             <div
@@ -121,13 +111,11 @@ export default function DashboardLayout({
                   return (
                     <Link
                       key={item.name}
-                      href={item.disabled ? '#' : item.href}
-                      onClick={() => !item.disabled && setIsMobileMenuOpen(false)}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
                       className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                         isActive
                           ? 'bg-blue-600 text-white shadow-xs'
-                          : item.disabled
-                          ? 'opacity-40 cursor-not-allowed'
                           : 'hover:bg-slate-50 hover:text-slate-900'
                       }`}
                     >
@@ -140,6 +128,7 @@ export default function DashboardLayout({
               <div className="p-4 border-t border-slate-100">
                 <Link
                   href="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-rose-50 hover:text-rose-600 transition-colors"
                 >
                   <LogOut className="h-4.5 w-4.5" />
@@ -150,7 +139,7 @@ export default function DashboardLayout({
           </div>
         )}
 
-        {/* Espaço de Conteúdo da Página */}
+        {/* Conteúdo */}
         <main className="flex-1 overflow-y-auto p-6 md:p-8 max-w-7xl w-full mx-auto">
           {children}
         </main>
